@@ -3,7 +3,11 @@ import json
 import math
 
 token = "yourToken"
-playlistId = "playlistID"
+
+url = "Playlist Link"
+index = url.find("list=")
+
+playlistId = url[index+5:]
 maxResults = 50 # máximo de 50 vídeos por página
 
 url = f"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults={maxResults}&playlistId={playlistId}&key={token}"
@@ -41,5 +45,5 @@ try:
 			response = r['items']
 			page += 1
 except Exception as e:
-	print(e)
+	print("Connection Error")
 
